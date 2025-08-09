@@ -5,6 +5,9 @@ import { FaCloudUploadAlt } from "react-icons/fa";
 import UploadImage from "../helpers/UploadImage";
 import DisplayImage from "./DisplayImage";
 import { MdDelete } from "react-icons/md";
+import SummaryApi from "../common";
+
+import { toast } from "react-toastify";
 
 const UploadProduct = ({ onClose }) => {
   const [data, setData] = useState({
@@ -46,7 +49,7 @@ const UploadProduct = ({ onClose }) => {
       };
     });
 
-    // console.log("Upload Image ", uploadImageCloudinary.url);
+    // console.log("Upload Image ", uploadImageCloudinary);
   };
 
   const handleDeleteProductImage = async (index) => {
@@ -63,8 +66,28 @@ const UploadProduct = ({ onClose }) => {
   };
 
   // Upload Product
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    // console.log("data", data);
+
+    const response = await fetch(SummaryApi.uploadProduct.url, {
+      method: SummaryApi.uploadProduct.method,
+      credentials: "include",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    const responseData = await response.json();
+
+    if (responseData.success) {
+      toast.success(responseData?.message);
+      onClose();
+    }
+    if (responseData.error) {
+      toast.error(responseData?.message);
+    }
   };
 
   return (
@@ -93,6 +116,7 @@ const UploadProduct = ({ onClose }) => {
             name="productName"
             onChange={handleOnChange}
             className="p-2 bg-slate-100 border rounded"
+            required
           />
           <label htmlFor="brandName" className="mt-3">
             Brand Name :
@@ -105,6 +129,7 @@ const UploadProduct = ({ onClose }) => {
             name="brandName"
             onChange={handleOnChange}
             className="p-2 bg-slate-100 border rounded"
+            required
           />
           <label htmlFor="category" className="mt-3">
             Category :
@@ -114,6 +139,7 @@ const UploadProduct = ({ onClose }) => {
             name="category"
             onChange={handleOnChange}
             className="p-2 bg-slate-100 border rounded"
+            required
           >
             <option value={""}>Select Category</option>
             {productCategory.map((el, index) => {
@@ -140,6 +166,7 @@ const UploadProduct = ({ onClose }) => {
                   id="uploadImageInput"
                   className="hidden"
                   onChange={handleUploadProduct}
+                  required
                 />
               </div>
             </div>
@@ -189,6 +216,7 @@ const UploadProduct = ({ onClose }) => {
             name="price"
             onChange={handleOnChange}
             className="p-2 bg-slate-100 border rounded"
+            required
           />
 
           <label htmlFor="sellingPrice" className="mt-3">
@@ -202,6 +230,7 @@ const UploadProduct = ({ onClose }) => {
             name="sellingPrice"
             onChange={handleOnChange}
             className="p-2 bg-slate-100 border rounded"
+            required
           />
 
           <label htmlFor="description" className="mt-3">
@@ -214,6 +243,7 @@ const UploadProduct = ({ onClose }) => {
             placeholder="Enter product description"
             rows={3}
             onChange={handleOnChange}
+            required
           ></textarea>
 
           <button className="px-3 py-2 bg-red-600 text-white mb-10 hover:bg-red-700">
