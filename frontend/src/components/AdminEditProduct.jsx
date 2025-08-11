@@ -9,7 +9,7 @@ import SummaryApi from "../common";
 
 import { toast } from "react-toastify";
 
-const AdminEditProduct = ({ onClose, productData }) => {
+const AdminEditProduct = ({ onClose, productData, fetchdata }) => {
   const [data, setData] = useState({
     ...productData,
     productName: productData?.productName,
@@ -85,6 +85,7 @@ const AdminEditProduct = ({ onClose, productData }) => {
     if (responseData.success) {
       toast.success(responseData?.message);
       onClose();
+      fetchdata();
     }
     if (responseData.error) {
       toast.error(responseData?.message);
@@ -166,7 +167,6 @@ const AdminEditProduct = ({ onClose, productData }) => {
                   id="uploadImageInput"
                   className="hidden"
                   onChange={handleUploadProduct}
-                  required
                 />
               </div>
             </div>

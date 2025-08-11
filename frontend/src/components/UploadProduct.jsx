@@ -166,7 +166,6 @@ const UploadProduct = ({ onClose }) => {
                   id="uploadImageInput"
                   className="hidden"
                   onChange={handleUploadProduct}
-                  required
                 />
               </div>
             </div>
