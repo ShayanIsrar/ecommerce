@@ -9,7 +9,7 @@ const AdminProductCart = ({ data, fetchdata }) => {
   return (
     <div className="bg-white p-4 rounded">
       <div className="">
-        <div className="w-40 h-40 overflow-hidden flex items-center justify-center bg-gray-50 rounded">
+        <div className="w-36 h-36 overflow-hidden flex items-center justify-center bg-gray-50 rounded">
           <img
             src={data?.productImage[0]}
             alt={data?.productName || "Product"}

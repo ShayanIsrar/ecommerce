@@ -1,11 +1,36 @@
-import React from 'react'
+import React from "react";
+import CategoryList from "../CategoryList";
+import BannerProduct from "../BannerProduct";
+import HorizontalCardProduct from "../HorizontalCardProduct";
+import VerticalCardProduct from "../VerticalCardProduct";
 
 const Home = () => {
   return (
     <div>
-      Home
-    </div>
-  )
-}
+      <CategoryList />
+      <BannerProduct />
+      <HorizontalCardProduct category={"airpodes"} heading={"Top's Airpodes"} />
+      <HorizontalCardProduct
+        category={"watches"}
+        heading={"Popular's Watches"}
+      />
 
-export default Home
+      <VerticalCardProduct category={"mobiles"} heading={"Mobiles"} />
+      <VerticalCardProduct category={"Mouse"} heading={"Mouse"} />
+      <VerticalCardProduct category={"televisions"} heading={"Televisions"} />
+      <VerticalCardProduct
+        category={"camera"}
+        heading={"Camera & Photography"}
+      />
+      <VerticalCardProduct category={"earphones"} heading={"Wired Earphones"} />
+      <VerticalCardProduct
+        category={"speakers"}
+        heading={"Bluetooth Speakers"}
+      />
+      <VerticalCardProduct category={"refrigerator"} heading={"Refrigerator"} />
+      <VerticalCardProduct category={"trimmers"} heading={"Trimmers"} />
+    </div>
+  );
+};
+
+export default Home;
