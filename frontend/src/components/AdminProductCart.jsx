@@ -17,12 +17,12 @@ const AdminProductCart = ({ data, fetchdata }) => {
           />
         </div>
 
-        <h1>{data.productName}</h1>
+        <h1 className="text-ellipsis line-clamp-2">{data.productName}</h1>
         <div>
-          <div>
+          <p className="font-semibold">
             {DisplayPkrCurrency(data.sellingPrice)}
             {/* {data.sellingPrice} */}
-          </div>
+          </p>
           <div
             className="w-fit ml-auto p-2 bg-green-100 hover:cursor-pointer hover:bg-green-600 rounded-full hover:text-white"
             onClick={() => setEditProduct(true)}
