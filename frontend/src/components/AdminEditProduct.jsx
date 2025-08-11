@@ -9,15 +9,16 @@ import SummaryApi from "../common";
 
 import { toast } from "react-toastify";
 
-const UploadProduct = ({ onClose }) => {
+const AdminEditProduct = ({ onClose, productData }) => {
   const [data, setData] = useState({
-    productName: "",
-    brandName: "",
-    category: "",
-    productImage: [],
-    description: "",
-    price: "",
-    sellingPrice: "",
+    ...productData,
+    productName: productData?.productName,
+    brandName: productData?.brandName,
+    category: productData?.category,
+    productImage: productData?.productImage || [],
+    description: productData?.description,
+    price: productData?.price,
+    sellingPrice: productData?.sellingPrice,
   });
 
   // const [uploadProductImageInput, setUploadProductImageInput] = useState("");
@@ -70,8 +71,8 @@ const UploadProduct = ({ onClose }) => {
     e.preventDefault();
     // console.log("data", data);
 
-    const response = await fetch(SummaryApi.uploadProduct.url, {
-      method: SummaryApi.uploadProduct.method,
+    const response = await fetch(SummaryApi.updateProduct.url, {
+      method: SummaryApi.updateProduct.method,
       credentials: "include",
       headers: {
         "content-type": "application/json",
@@ -89,12 +90,11 @@ const UploadProduct = ({ onClose }) => {
       toast.error(responseData?.message);
     }
   };
-
   return (
     <div className="fixed bg-slate-200 bg-opacity-25 w-full h-full top-0 left-0 right-0 bottom-0 flex justify-center items-center">
       <div className="bg-white p-4 rounded w-full max-w-2xl h-full max-h-[80%] overflow-hidden">
         <div className="flex justify-between items-center pb-3">
-          <h2 className="font-bold text-lg">Upload Product</h2>
+          <h2 className="font-bold text-lg">Edit Product</h2>
           <div
             className="w-fit ml-auto text-2xl hover:text-red-600 cursor-pointer"
             onClick={onClose}
@@ -248,7 +248,7 @@ const UploadProduct = ({ onClose }) => {
           ></textarea>
 
           <button className="px-3 py-2 bg-red-600 text-white mb-10 hover:bg-red-700">
-            Upload Product
+            Update Product
           </button>
         </form>
       </div>
@@ -264,4 +264,4 @@ const UploadProduct = ({ onClose }) => {
   );
 };
 
-export default UploadProduct;
+export default AdminEditProduct;
