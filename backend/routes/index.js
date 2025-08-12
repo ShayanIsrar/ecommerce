@@ -8,19 +8,12 @@ const updateUser = require("../controller/user/updateUser");
 const UploadProductController = require("../controller/product/uploadProduct");
 const getProductController = require("../controller/product/getProduct");
 const updateProductController = require("../controller/product/updateProduct");
-// const userSignUpController = require("../controller/userSignUp");
-// const userSignInController = require("../controller/userSignIn");
-// const userDetailsController = require("../controller/userDetails");
 const authToken = require("../middleware/authToken");
 const getCategoryProductOne = require("../controller/product/getCategoryProductOne");
 const getCategoryWiseProduct = require("../controller/product/getCategoryWiseProduct");
 const getProductDetails = require("../controller/product/getProductDetails");
-// const userLogout = require("../controller/userLogout");
-// const allUsers = require("../controller/allUsers");
-// const updateUser = require("../controller/updateUser");
-// const UploadProductController = require("../controller/uploadProduct");
-// const getProductController = require("../controller/getProduct");
-// const updateProductController = require("../controller/updateProduct");
+const addToCartController = require("../controller/user/addToCartController");
+const countAddToCartProduct = require("../controller/user/countAddToCartProduct");
 
 const router = express.Router();
 
@@ -47,8 +40,8 @@ router.post("/product-details", getProductDetails);
 // router.post("/filter-product",filterProductController)
 
 // //user add to cart
-// router.post("/addtocart",authToken,addToCartController)
-// router.get("/countAddToCartProduct",authToken,countAddToCartProduct)
+router.post("/addtocart", authToken, addToCartController);
+router.get("/countAddToCartProduct", authToken, countAddToCartProduct);
 // router.get("/view-card-product",authToken,addToCartViewProduct)
 // router.post("/update-cart-product",authToken,updateAddToCartProduct)
 // router.post("/delete-cart-product",authToken,deleteAddToCartProduct)
