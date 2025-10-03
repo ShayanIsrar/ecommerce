@@ -36,6 +36,7 @@ const ProductDetails = () => {
   const { fetchUserAddToCart } = useContext(Context);
 
   const navigate = useNavigate();
+  // this me shayan israr iam form dero iam learning case i go to prorn contry
 
   const fetchProductDetails = async () => {
     setLoading(true);
