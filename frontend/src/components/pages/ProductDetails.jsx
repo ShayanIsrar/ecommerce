@@ -31,12 +31,9 @@ const ProductDetails = () => {
   });
   const [zoomImage, setZoomImage] = useState(false);
 
-  // hi this is shayan from peshawer what are you doing here dear
-
   const { fetchUserAddToCart } = useContext(Context);
 
   const navigate = useNavigate();
-  // this me shayan israr iam form dero iam learning case i go to prorn contry
 
   const fetchProductDetails = async () => {
     setLoading(true);
