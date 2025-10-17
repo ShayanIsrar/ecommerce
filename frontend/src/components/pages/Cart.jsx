@@ -107,6 +107,7 @@ const Cart = () => {
     (preve, curr) => preve + curr.quantity * curr?.productId?.sellingPrice,
     0
   );
+
   return (
     <div className="container mx-auto">
       <div className="text-center text-lg my-3">

@@ -1,9 +1,9 @@
 import React from "react";
 
 const DisplayPkrCurrency = (num) => {
-  const formatter = new Intl.NumberFormat("en-IN", {
+  const formatter = new Intl.NumberFormat("en-PK", {
     style: "currency",
-    currency: "INR",
+    currency: "PKR",
     minimumFractionDigits: 2,
   });
 
