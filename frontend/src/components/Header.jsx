@@ -133,7 +133,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import SummaryApi from "../common";
 import { toast } from "react-toastify";
-import { setUserDetails } from "../store/userSlice";
+import { setUserDetails } from "../store/UserSlice";
 import ROLE from "../common/role";
 import Context from "../context";
 
